@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:sharedUserId="android.uid.system">
+
+    <application
+        android:allowBackup="false"
+        android:directBootAware="true"
+        android:fullBackupContent="false"
+        android:icon="@android:drawable/sym_def_app_icon"
+        android:label="GaoyiPlayOS Setup Wizard"
+        android:supportsRtl="true"
+        android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar">
+        <activity
+            android:name=".SetupWizardActivity"
+            android:enableOnBackInvokedCallback="true"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
