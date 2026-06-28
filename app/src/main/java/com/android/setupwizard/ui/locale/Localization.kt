@@ -55,6 +55,15 @@ private val English = Strings(
     disagreeKeepReading = "Keep reading",
     disagreePowerOff = "Power off",
     moeToast = "(｡･ω･｡)ﾉ Moe mode activated!",
+    lockTitle = "Protect your phone",
+    lockSubtitle = "Set a screen lock so only you can unlock this device and access your data.",
+    lockPin = "PIN",
+    lockPinDesc = "Enter 4 or more digits",
+    lockPassword = "Password",
+    lockPasswordDesc = "Mix letters, numbers and symbols",
+    lockPattern = "Pattern",
+    lockPatternDesc = "Connect 4 or more dots",
+    lockSkip = "SKIP",
 )
 
 /* 日文 */
