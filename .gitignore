@@ -1,8 +1,33 @@
+# Build Related
 .gradle
 .gradle-tmp
 build
-app/build
 local.properties
 *.iml
 .idea
 
+# Electron Bloat
+/.vscode
+*.pak
+*.asar
+
+# Certificate & tmp files
+/sign
+*.jks
+*.keystore
+keystore.properties
+/anim
+/tmp
+
+# Agent Related
+/CLAUDE.md
+/GEMINI.md
+/AGENTS.md
+/.claude
+/.codex
+/.gemini
+
+# For those who using Android Studio
+# btw I use Neovim
+captures/
+*.hprof
