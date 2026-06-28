@@ -313,11 +313,6 @@ private fun DisagreeDialog(
     )
 }
 
-/* ---------- 状态便捷封装 ---------- */
-
-@Composable
-private fun rememberStateBoolean() = remember { mutableStateOf(false) }
-
 /* ---------- 协议语种解析 ---------- */
 
 private const val TOS_BASE_URL = "https://gaoyi.cn-nb1.rains3.com/internal/docs/release/tos"
