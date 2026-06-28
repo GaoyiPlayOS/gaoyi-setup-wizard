@@ -20,6 +20,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.android.setupwizard.ui.agreement.AgreementScreen
 import com.android.setupwizard.ui.language.LanguageScreen
+import com.android.setupwizard.ui.lock.LockScreen
 import com.android.setupwizard.ui.welcome.WelcomeScreen
 import java.util.Locale
 import kotlin.math.roundToInt
@@ -28,6 +29,7 @@ private object SetupWizardRoute {
     const val Welcome = "welcome"
     const val Language = "language"
     const val Agreement = "agreement"
+    const val Lock = "lock"
 }
 
 private object SetupWizardMotionSpec {
@@ -127,8 +129,13 @@ fun SetupWizardHost(
         composable(route = SetupWizardRoute.Agreement) {
             AgreementScreen(
                 selectedLocale = selectedLocale,
-                onNext = onSetupFinished,
+                onNext = { navController.navigate(SetupWizardRoute.Lock) },
                 onBack = { navController.popBackStack() },
+            )
+        }
+        composable(route = SetupWizardRoute.Lock) {
+            LockScreen(
+                onNext = onSetupFinished,
             )
         }
     }
