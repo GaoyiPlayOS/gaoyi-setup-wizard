@@ -1,0 +1,35 @@
+GaoyiPlayOS User Agreement and Legal Disclaimer
+===============================================
+
+**Target Version:** All versions of GaoyiPlayOS (A highly customized and optimized ROM based on LineageOS 19.1)  
+**Applicable Scope:** All users operating this system within virtual machine (VM) environments  
+
+I. System Nature Declaration
+----------------------------
+1.  **Non-Commercial Nature:** GaoyiPlayOS is a third-party, stock-like custom ROM built on the Android Open Source Project (AOSP) and LineageOS. This project is intended solely for hobbyists, non-commercial use, and virtual machine testing environments. Any commercial exploitation, illegal use, or infringing activities are strictly prohibited.
+2.  **Commitment to Purity:** This system has been stripped of Google Mobile Services (GMS), featuring lightweight LineageOS stock applications and custom visual enhancements (including a holographic blur settings center, semi-blurred lock screen, GY Launcher optimizations, etc.). The developers guarantee that all modifications are strictly for enhancing user experience, and the system contains no malware, backdoors, or privacy-compromising code.
+
+II. Risk Assumption and Disclaimers
+-----------------------------------
+3.  **Assumption of Risk:** Users must acknowledge that flashing or installing custom third-party firmware carries inherent risks, including device bricking and data loss. By agreeing to this disclaimer, you accept full responsibility for these risks. The developers shall not be held financially or legally liable for any hardware damage, data loss, voided warranties, or other liabilities arising from the use of this system.
+4.  **No Warranty:** This system is provided on an "As-Is" basis, without warranty of any kind, express or implied, including but not limited to warranties of fitness for a particular purpose, stability, or guarantees of ongoing updates.
+
+III. Intellectual Property and Copyright Guidelines
+---------------------------------------------------
+5.  **Compliance with Open Source Licenses:** This system respects and complies with all applicable open-source licenses, including AOSP (Apache License 2.0) and LineageOS (GPLv2). All integrated third-party open-source components remain the intellectual property of their respective copyright holders.
+6.  **Visual Assets:** Unless otherwise specified, all visual assets within this system, including icons, wallpapers, and UI elements, are the intellectual property of the `GaoyiPlayOS` team or their respective owners. Unauthorized extraction and commercial distribution of any proprietary components from this system are strictly prohibited.
+
+IV. User Code of Conduct
+------------------------
+7.  **Legal Compliance:** Users must comply with all applicable local laws and regulations when using this system. Engaging in cyberattacks, software cracking, distributing illegal content, or any other malicious activities using this system or its built-in tools is strictly prohibited.
+8.  **Reverse Engineering Prohibited:** Except as otherwise permitted by law, users may not decompile, disassemble, or reverse engineer any protected proprietary binaries within this system, ensuring the security and integrity of the system architecture.
+
+V. Privacy Policy Summary
+-------------------------
+9.  **Offline Sovereignty:** We adhere to the principle of "user data sovereignty." By default, this system contains no remote telemetry and does not collect sensitive personal data such as your physical location, contacts, or call logs.
+10. **Third-Party Services:** If you choose to install third-party applications or services, their respective privacy policies apply. The developers of GaoyiPlayOS bear no responsibility for the data handling practices of third-party services.
+
+VI. Agreement Modification and Termination
+------------------------------------------
+11. **Amendments to Terms:** The developers reserve the right to modify these terms at any time. Any changes become effective immediately upon publication. Continued use of this system constitutes your acceptance of the revised terms.
+12. **Right of Final Interpretation:** To the maximum extent permitted by law, the right of final interpretation of this agreement rests solely with the Gy Studio.
