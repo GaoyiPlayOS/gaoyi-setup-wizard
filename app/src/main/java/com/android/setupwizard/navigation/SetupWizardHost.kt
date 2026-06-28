@@ -20,6 +20,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.android.setupwizard.ui.language.LanguageScreen
 import com.android.setupwizard.ui.welcome.WelcomeScreen
+import java.util.Locale
 import kotlin.math.roundToInt
 
 private object SetupWizardRoute {
