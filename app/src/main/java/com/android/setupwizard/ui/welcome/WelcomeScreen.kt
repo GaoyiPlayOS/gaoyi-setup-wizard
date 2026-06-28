@@ -45,6 +45,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.android.setupwizard.ui.locale.LocalStrings
+import com.android.setupwizard.ui.theme.BrandFontFamily
 
 private val DriftEasing = CubicBezierEasing(0.16f, 0.84f, 0.14f, 1f)
 private val RiseEasing = CubicBezierEasing(0.37f, 0f, 0.18f, 1f)
@@ -99,7 +100,8 @@ fun WelcomeScreen(
                 Text(
                     text = "GaoyiPlayOS",
                     style = MaterialTheme.typography.displayMedium.copy(
-                        fontWeight = FontWeight.Bold,
+                        fontFamily = BrandFontFamily,
+                        fontWeight = FontWeight.Medium,
                         letterSpacing = (-0.8).sp,
                     ),
                     color = colorScheme.onSurface,

@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.LocaleList
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -45,8 +44,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -72,18 +69,8 @@ fun LanguageScreen(
     val selectedTag = selectedLocale.toLanguageTag()
 
     Scaffold(
-        modifier = modifier
-            .fillMaxSize()
-            .background(
-                brush = Brush.verticalGradient(
-                    colors = listOf(
-                        colorScheme.surfaceBright,
-                        colorScheme.surface,
-                        colorScheme.surfaceContainerLowest,
-                    ),
-                ),
-            ),
-        containerColor = Color.Transparent,
+        modifier = modifier.fillMaxSize(),
+        containerColor = colorScheme.surface,
         contentWindowInsets = WindowInsets.safeDrawing,
     ) { innerPadding ->
         Column(
