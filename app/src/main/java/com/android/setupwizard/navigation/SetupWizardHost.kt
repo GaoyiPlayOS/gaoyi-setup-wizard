@@ -18,11 +18,13 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.android.setupwizard.ui.language.LanguageScreen
 import com.android.setupwizard.ui.welcome.WelcomeScreen
 import kotlin.math.roundToInt
 
 private object SetupWizardRoute {
     const val Welcome = "welcome"
+    const val Language = "language"
 }
 
 private object SetupWizardMotionSpec {
@@ -91,7 +93,7 @@ private fun AnimatedContentTransitionScope<NavBackStackEntry>.closeExit(): ExitT
 
 @Composable
 fun SetupWizardHost(
-    onWelcomeNext: () -> Unit,
+    onSetupFinished: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val navController = rememberNavController()
@@ -106,7 +108,12 @@ fun SetupWizardHost(
         popExitTransition = { closeExit() },
     ) {
         composable(route = SetupWizardRoute.Welcome) {
-            WelcomeScreen(onNext = onWelcomeNext)
+            WelcomeScreen(
+                onNext = { navController.navigate(SetupWizardRoute.Language) },
+            )
+        }
+        composable(route = SetupWizardRoute.Language) {
+            LanguageScreen(onNext = onSetupFinished)
         }
     }
 }
