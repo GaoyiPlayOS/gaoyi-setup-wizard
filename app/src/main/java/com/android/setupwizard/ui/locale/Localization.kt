@@ -23,6 +23,16 @@ data class Strings(
     val disagreeKeepReading: String,
     val disagreePowerOff: String,
     val moeToast: String,
+    // 锁屏安全屏 (LockScreen)
+    val lockTitle: String,
+    val lockSubtitle: String,
+    val lockPin: String,
+    val lockPinDesc: String,
+    val lockPassword: String,
+    val lockPasswordDesc: String,
+    val lockPattern: String,
+    val lockPatternDesc: String,
+    val lockSkip: String,
 )
 
 /* English (US) */
