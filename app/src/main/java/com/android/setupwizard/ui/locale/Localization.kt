@@ -86,6 +86,15 @@ private val Japanese = Strings(
     disagreeKeepReading = "読み続ける",
     disagreePowerOff = "電源を切る",
     moeToast = "(｡･ω･｡)ﾉ 萌えモード！",
+    lockTitle = "デバイスを保護",
+    lockSubtitle = "画面ロックを設定すると、あなただけがこのデバイスのロックを解除し、データにアクセスできます。",
+    lockPin = "PIN",
+    lockPinDesc = "4 桁以上の数字を入力",
+    lockPassword = "パスワード",
+    lockPasswordDesc = "英字・数字・記号を組み合わせる",
+    lockPattern = "パターン",
+    lockPatternDesc = "4 つ以上の点をつなぐ",
+    lockSkip = "スキップ",
 )
 
 /* 中文全集 */
@@ -108,6 +117,15 @@ private val SimplifiedChinese = Strings(
     disagreeKeepReading = "继续阅读",
     disagreePowerOff = "关机",
     moeToast = "(｡･ω･｡)ﾉ 萌化模式已开启～",
+    lockTitle = "保护你的设备",
+    lockSubtitle = "设置屏幕锁定后，只有你才能解锁本设备并访问其中的数据。",
+    lockPin = "数字密码 PIN",
+    lockPinDesc = "输入至少 4 位数字",
+    lockPassword = "混合密码",
+    lockPasswordDesc = "字母、数字与符号混合",
+    lockPattern = "手势密码",
+    lockPatternDesc = "连接至少 4 个点",
+    lockSkip = "不设置",
 )
 
 private val TraditionalChinese = Strings(
@@ -129,6 +147,15 @@ private val TraditionalChinese = Strings(
     disagreeKeepReading = "繼續閱讀",
     disagreePowerOff = "關機",
     moeToast = "(｡･ω･｡)ﾉ 萌化模式已開啟～",
+    lockTitle = "保護你的裝置",
+    lockSubtitle = "設定螢幕鎖定後，只有你才能解鎖本裝置並存取其中的資料。",
+    lockPin = "數字密碼 PIN",
+    lockPinDesc = "輸入至少 4 位數字",
+    lockPassword = "混合密碼",
+    lockPasswordDesc = "字母、數字與符號混合",
+    lockPattern = "圖形密碼",
+    lockPatternDesc = "連接至少 4 個點",
+    lockSkip = "不設定",
 )
 
 /* 韩文 */
@@ -151,6 +178,15 @@ private val Korean = Strings(
     disagreeKeepReading = "계속 읽기",
     disagreePowerOff = "종료",
     moeToast = "(｡･ω･｡)ﾉ 모에 모드 활성화!",
+    lockTitle = "기기 보호",
+    lockSubtitle = "화면 잠금을 설정하면 나만 이 기기를 잠금 해제하고 데이터에 접근할 수 있습니다.",
+    lockPin = "PIN",
+    lockPinDesc = "숫자 4자리 이상 입력",
+    lockPassword = "비밀번호",
+    lockPasswordDesc = "문자, 숫자, 기호 조합",
+    lockPattern = "패턴",
+    lockPatternDesc = "4개 이상의 점 연결",
+    lockSkip = "건너뛰기",
 )
 
 /* 俄文 */
@@ -173,6 +209,15 @@ private val Russian = Strings(
     disagreeKeepReading = "Продолжить чтение",
     disagreePowerOff = "Выключить",
     moeToast = "(｡･ω･｡)ﾉ Moe-режим включён!",
+    lockTitle = "Защитите устройство",
+    lockSubtitle = "Установите блокировку экрана, чтобы только вы могли разблокировать устройство и получить доступ к данным.",
+    lockPin = "PIN-код",
+    lockPinDesc = "Введите не менее 4 цифр",
+    lockPassword = "Пароль",
+    lockPasswordDesc = "Буквы, цифры и символы",
+    lockPattern = "Графический ключ",
+    lockPatternDesc = "Соедините не менее 4 точек",
+    lockSkip = "ПРОПУСТИТЬ",
 )
 
 private val TraditionalChineseRegions = setOf("TW", "HK", "MO")
