@@ -94,6 +94,8 @@ private fun AnimatedContentTransitionScope<NavBackStackEntry>.closeExit(): ExitT
 
 @Composable
 fun SetupWizardHost(
+    selectedLocale: Locale,
+    onLocaleSelected: (Locale) -> Unit,
     onSetupFinished: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -114,7 +116,11 @@ fun SetupWizardHost(
             )
         }
         composable(route = SetupWizardRoute.Language) {
-            LanguageScreen(onNext = onSetupFinished)
+            LanguageScreen(
+                selectedLocale = selectedLocale,
+                onLocaleSelected = onLocaleSelected,
+                onNext = onSetupFinished,
+            )
         }
     }
 }

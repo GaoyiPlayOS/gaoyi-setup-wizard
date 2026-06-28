@@ -44,6 +44,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.android.setupwizard.ui.locale.LocalStrings
 
 private val DriftEasing = CubicBezierEasing(0.16f, 0.84f, 0.14f, 1f)
 private val RiseEasing = CubicBezierEasing(0.37f, 0f, 0.18f, 1f)
@@ -54,6 +55,7 @@ fun WelcomeScreen(
     modifier: Modifier = Modifier,
 ) {
     val colorScheme = MaterialTheme.colorScheme
+    val strings = LocalStrings.current
 
     Scaffold(
         modifier = modifier
@@ -90,7 +92,7 @@ fun WelcomeScreen(
 
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 Text(
-                    text = "Welcome to",
+                    text = strings.welcomeTo,
                     style = MaterialTheme.typography.headlineSmall,
                     color = colorScheme.onSurfaceVariant,
                 )
@@ -117,7 +119,7 @@ fun WelcomeScreen(
                 ) {
                     Icon(
                         imageVector = Icons.Outlined.AccessibilityNew,
-                        contentDescription = "Accessibility",
+                        contentDescription = strings.accessibility,
                     )
                 }
 
@@ -126,7 +128,7 @@ fun WelcomeScreen(
                     shape = RoundedCornerShape(24.dp),
                 ) {
                     Text(
-                        text = "START",
+                        text = strings.start,
                         fontWeight = FontWeight.SemiBold,
                     )
                     Spacer(modifier = Modifier.width(8.dp))

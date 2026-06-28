@@ -51,22 +51,25 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.android.setupwizard.ui.locale.LocalStrings
 import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LanguageScreen(
+    selectedLocale: Locale,
+    onLocaleSelected: (Locale) -> Unit,
     onNext: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
     val colorScheme = MaterialTheme.colorScheme
+    val strings = LocalStrings.current
 
     val availableLocales = remember { systemAvailableLocales() }
-    var selectedTag by rememberSaveable { mutableStateOf(Locale.getDefault().toLanguageTag()) }
     var sheetVisible by rememberSaveable { mutableStateOf(false) }
 
-    val selectedLocale = remember(selectedTag) { Locale.forLanguageTag(selectedTag) }
+    val selectedTag = selectedLocale.toLanguageTag()
 
     Scaffold(
         modifier = modifier
@@ -105,7 +108,7 @@ fun LanguageScreen(
             Spacer(modifier = Modifier.height(24.dp))
 
             Text(
-                text = "Set Language",
+                text = strings.setLanguage,
                 style = MaterialTheme.typography.displaySmall.copy(
                     fontWeight = FontWeight.SemiBold,
                     letterSpacing = (-0.5).sp,
@@ -118,7 +121,7 @@ fun LanguageScreen(
             // 区域 B: 中部选项卡（居左）
             LanguageSelectorCard(
                 title = selectedLocale.autonym(),
-                subtitle = "Change / 更改",
+                subtitle = strings.change,
                 onClick = { sheetVisible = true },
             )
 
@@ -135,7 +138,7 @@ fun LanguageScreen(
                     shape = RoundedCornerShape(24.dp),
                 ) {
                     Text(
-                        text = "CONTINUE",
+                        text = strings.continueLabel,
                         fontWeight = FontWeight.SemiBold,
                     )
                     Spacer(modifier = Modifier.width(8.dp))
@@ -153,7 +156,7 @@ fun LanguageScreen(
             locales = availableLocales,
             selectedTag = selectedTag,
             onSelect = { locale ->
-                selectedTag = locale.toLanguageTag()
+                onLocaleSelected(locale)
                 applySystemLocale(context, locale)
                 sheetVisible = false
             },
@@ -234,7 +237,7 @@ private fun LanguageBottomSheet(
         ) {
             item {
                 Text(
-                    text = "Select Language / 选择语言",
+                    text = LocalStrings.current.selectLanguage,
                     style = MaterialTheme.typography.titleLarge,
                     color = MaterialTheme.colorScheme.onSurface,
                     modifier = Modifier.padding(horizontal = 24.dp, vertical = 12.dp),
@@ -293,7 +296,7 @@ private fun LanguageRow(
             Spacer(modifier = Modifier.width(12.dp))
             Icon(
                 imageVector = Icons.Rounded.Check,
-                contentDescription = "Selected",
+                contentDescription = LocalStrings.current.selected,
                 tint = colorScheme.primary,
             )
         }
