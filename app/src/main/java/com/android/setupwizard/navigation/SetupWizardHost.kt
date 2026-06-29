@@ -21,6 +21,7 @@ import androidx.navigation.compose.rememberNavController
 import com.android.setupwizard.ui.agreement.AgreementScreen
 import com.android.setupwizard.ui.language.LanguageScreen
 import com.android.setupwizard.ui.lock.LockScreen
+import com.android.setupwizard.ui.preferences.PreferencesScreen
 import com.android.setupwizard.ui.welcome.WelcomeScreen
 import java.util.Locale
 import kotlin.math.roundToInt
@@ -30,6 +31,7 @@ private object SetupWizardRoute {
     const val Language = "language"
     const val Agreement = "agreement"
     const val Lock = "lock"
+    const val Preferences = "preferences"
 }
 
 private object SetupWizardMotionSpec {
@@ -100,6 +102,8 @@ private fun AnimatedContentTransitionScope<NavBackStackEntry>.closeExit(): ExitT
 fun SetupWizardHost(
     selectedLocale: Locale,
     onLocaleSelected: (Locale) -> Unit,
+    isDarkTheme: Boolean,
+    onDarkThemeChange: (Boolean) -> Unit,
     onSetupFinished: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -135,6 +139,18 @@ fun SetupWizardHost(
         }
         composable(route = SetupWizardRoute.Lock) {
             LockScreen(
+                // 成功设锁或点击 SKIP 均流转至偏好设置屏（push，自动继承全局左滑转场）。
+                onNext = { navController.navigate(SetupWizardRoute.Preferences) },
+            )
+        }
+        composable(route = SetupWizardRoute.Preferences) {
+            PreferencesScreen(
+                isDarkTheme = isDarkTheme,
+                onDarkThemeChange = onDarkThemeChange,
+                onBack = { navController.popBackStack() },
+
+                // TODO: 第六屏: 待第六屏落地后，将 onNext 改为 navigate(SetupWizardRoute.<Next>)
+                
                 onNext = onSetupFinished,
             )
         }
