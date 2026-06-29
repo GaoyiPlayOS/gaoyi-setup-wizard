@@ -33,6 +33,18 @@ data class Strings(
     val lockPattern: String,
     val lockPatternDesc: String,
     val lockSkip: String,
+    // 偏好设置屏 (PreferencesScreen)
+    val preferencesTitle: String,
+    val monetPalette: String,
+    val customizeColors: String,
+    val appearanceTitle: String,
+    val darkMode: String,
+    val darkModeDesc: String,
+    val lightMode: String,
+    val lightModeDesc: String,
+    val noMonetManager: String,
+    val back: String,
+    val nextStep: String,
 )
 
 /* English (US) */
