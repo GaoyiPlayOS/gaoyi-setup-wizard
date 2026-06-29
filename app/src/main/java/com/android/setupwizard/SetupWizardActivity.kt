@@ -1,8 +1,11 @@
 package com.android.setupwizard
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
@@ -12,7 +15,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.core.view.WindowCompat
 import com.android.setupwizard.navigation.SetupWizardHost
 import com.android.setupwizard.ui.locale.LocalStrings
 import com.android.setupwizard.ui.locale.stringsFor
@@ -23,8 +25,12 @@ import java.util.Locale
 class SetupWizardActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // 完全沉浸：状态栏与导航栏均透明，Compose 内容绘制至物理像素边界
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT),
+            navigationBarStyle = SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT),
+        )
         super.onCreate(savedInstanceState)
-        WindowCompat.setDecorFitsSystemWindows(window, false)
 
         setContent {
             // LocalStrings 重组，实现所见即所得的实时语言切换
