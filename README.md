@@ -20,8 +20,9 @@ A simple, minimalism SUW (Setup Wizard) for GaoyiPlayOS Release version.
 
 ## Requirements
 - Only support **`aarch64` (armv8)**
+- Minimal Android version is **12 (API 31)**
 - `platform` Signing Keys from AOSP is **required for `shared.system.uid`**
-- Builds must be placed in `/system/priv-app/SetupWizard` with name `SetupWizard.apk`
+- Builds must be placed in `/system/system_ext/priv-app/SetupWizard` with name `SetupWizard.apk`
 
 ## License
 GPL Version 3. See the [License](/LICENSE) file.
