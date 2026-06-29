@@ -76,6 +76,17 @@ private val English = Strings(
     lockPattern = "Pattern",
     lockPatternDesc = "Connect 4 or more dots",
     lockSkip = "SKIP",
+    preferencesTitle = "Preferences",
+    monetPalette = "Monet Color Palette",
+    customizeColors = "Customize in Settings",
+    appearanceTitle = "Appearance",
+    darkMode = "Dark",
+    darkModeDesc = "Dim surfaces, easy on the eyes at night",
+    lightMode = "Light",
+    lightModeDesc = "Bright surfaces, clear in daylight",
+    noMonetManager = "No available Monet manager detected.",
+    back = "BACK",
+    nextStep = "CONTINUE",
 )
 
 /* 日文 */
@@ -107,6 +118,17 @@ private val Japanese = Strings(
     lockPattern = "パターン",
     lockPatternDesc = "4 つ以上の点をつなぐ",
     lockSkip = "スキップ",
+    preferencesTitle = "環境設定",
+    monetPalette = "Monet カラーパレット",
+    customizeColors = "壁紙と色を変更",
+    appearanceTitle = "外観",
+    darkMode = "ダーク",
+    darkModeDesc = "暗い画面で夜間も目にやさしい",
+    lightMode = "ライト",
+    lightModeDesc = "明るい画面で日中も見やすい",
+    noMonetManager = "利用可能な Monet マネージャーが見つかりません。(´･ω･`)",
+    back = "戻る",
+    nextStep = "次へ",
 )
 
 /* 中文全集 */
@@ -138,6 +160,17 @@ private val SimplifiedChinese = Strings(
     lockPattern = "手势密码",
     lockPatternDesc = "连接至少 4 个点",
     lockSkip = "不设置",
+    preferencesTitle = "个性化",
+    monetPalette = "Monet 动态取色",
+    customizeColors = "更改壁纸与颜色",
+    appearanceTitle = "外观模式",
+    darkMode = "深色",
+    darkModeDesc = "暗色界面，夜间护眼更舒适",
+    lightMode = "浅色",
+    lightModeDesc = "亮色界面，日间显示更清晰",
+    noMonetManager = "没有可用的 Monet 管理器哦。(´･ω･`)",
+    back = "上一步",
+    nextStep = "下一步",
 )
 
 private val TraditionalChinese = Strings(
@@ -168,6 +201,17 @@ private val TraditionalChinese = Strings(
     lockPattern = "圖形密碼",
     lockPatternDesc = "連接至少 4 個點",
     lockSkip = "不設定",
+    preferencesTitle = "個人化",
+    monetPalette = "Monet 動態取色",
+    customizeColors = "變更桌布與顏色",
+    appearanceTitle = "外觀模式",
+    darkMode = "深色",
+    darkModeDesc = "暗色介面，夜間護眼更舒適",
+    lightMode = "淺色",
+    lightModeDesc = "亮色介面，日間顯示更清晰",
+    noMonetManager = "沒有可用的 Monet 管理器哦。(´･ω･`)",
+    back = "上一步",
+    nextStep = "下一步",
 )
 
 /* 韩文 */
@@ -199,6 +243,17 @@ private val Korean = Strings(
     lockPattern = "패턴",
     lockPatternDesc = "4개 이상의 점 연결",
     lockSkip = "건너뛰기",
+    preferencesTitle = "환경설정",
+    monetPalette = "Monet 색상 팔레트",
+    customizeColors = "배경화면 및 색상 변경",
+    appearanceTitle = "화면 모드",
+    darkMode = "어두운 테마",
+    darkModeDesc = "어두운 화면으로 야간에도 눈이 편안",
+    lightMode = "밝은 테마",
+    lightModeDesc = "밝은 화면으로 낮에도 선명하게",
+    noMonetManager = "사용 가능한 Monet 관리자를 찾을 수 없습니다.",
+    back = "이전",
+    nextStep = "다음",
 )
 
 /* 俄文 */
@@ -230,6 +285,17 @@ private val Russian = Strings(
     lockPattern = "Графический ключ",
     lockPatternDesc = "Соедините не менее 4 точек",
     lockSkip = "ПРОПУСТИТЬ",
+    preferencesTitle = "Настройки",
+    monetPalette = "Палитра Monet",
+    customizeColors = "Обои и цвета",
+    appearanceTitle = "Оформление",
+    darkMode = "Тёмная",
+    darkModeDesc = "Тёмные поверхности, комфортно ночью",
+    lightMode = "Светлая",
+    lightModeDesc = "Светлые поверхности, чётко при свете дня",
+    noMonetManager = "Доступный менеджер Monet не найден.",
+    back = "НАЗАД",
+    nextStep = "ПРОДОЛЖИТЬ",
 )
 
 private val TraditionalChineseRegions = setOf("TW", "HK", "MO")
