@@ -13,6 +13,9 @@ import androidx.compose.ui.platform.LocalContext
 private val FallbackLightColors = lightColorScheme()
 private val FallbackDarkColors = darkColorScheme()
 
+/* 向导内的外观模式三态 */
+enum class ThemeMode { System, Light, Dark }
+
 @Composable
 fun SetupWizardTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
