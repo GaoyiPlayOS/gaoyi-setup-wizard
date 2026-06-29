@@ -32,7 +32,7 @@ chown root:root /system/system_ext/etc/permissions/privapp-permissions-setupwiza
 ## SELinux Context
 Don't ignore them, as they're playing an important role on most of Android system.
 ```bash
-# Use `resetrecon`.
+# Use `restorecon`.
 # It will automatically fix the SELinux Context by the system policy.
 
 restorecon -R /system/system_ext/priv-app/SetupWizard
