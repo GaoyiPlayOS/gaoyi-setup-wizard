@@ -55,6 +55,8 @@ data class Strings(
     val navThreeButtonTitle: String,
     val navThreeButtonDesc: String,
     val navUnavailable: String,
+    // 完成屏 (FinishScreen)
+    val letsGo: String,
 )
 
 /* English (US) */
@@ -106,6 +108,7 @@ private val English = Strings(
     navThreeButtonTitle = "3-button",
     navThreeButtonDesc = "Classic Back, Home and Recents keys along the bottom.",
     navUnavailable = "Not supported on this device",
+    letsGo = "Let's go",
 )
 
 /* 日文 */
@@ -157,6 +160,7 @@ private val Japanese = Strings(
     navThreeButtonTitle = "3 ボタン",
     navThreeButtonDesc = "下部に戻る・ホーム・履歴の 3 つのキーを表示します。",
     navUnavailable = "この端末では利用できません",
+    letsGo = "はじめる",
 )
 
 /* 中文全集 */
@@ -208,6 +212,7 @@ private val SimplifiedChinese = Strings(
     navThreeButtonTitle = "三按钮",
     navThreeButtonDesc = "屏幕底部经典的返回、主屏与最近任务三键。",
     navUnavailable = "此设备不支持",
+    letsGo = "开始吧~",
 )
 
 private val TraditionalChinese = Strings(
@@ -258,6 +263,7 @@ private val TraditionalChinese = Strings(
     navThreeButtonTitle = "三按鈕",
     navThreeButtonDesc = "螢幕底部經典的返回、主畫面與最近工作三鍵。",
     navUnavailable = "此裝置不支援",
+    letsGo = "開始吧~",
 )
 
 /* 韩文 */
@@ -309,6 +315,7 @@ private val Korean = Strings(
     navThreeButtonTitle = "3 버튼",
     navThreeButtonDesc = "화면 하단의 기본 뒤로, 홈, 최근 사용 키입니다.",
     navUnavailable = "이 기기에서는 지원되지 않습니다",
+    letsGo = "시작하기",
 )
 
 /* 俄文 */
@@ -360,6 +367,7 @@ private val Russian = Strings(
     navThreeButtonTitle = "3 кнопки",
     navThreeButtonDesc = "Классические кнопки «Назад», «Домой» и «Обзор» внизу экрана.",
     navUnavailable = "Не поддерживается на этом устройстве",
+    letsGo = "Поехали",
 )
 
 private val TraditionalChineseRegions = setOf("TW", "HK", "MO")
