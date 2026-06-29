@@ -1,5 +1,6 @@
 package com.android.setupwizard.ui.welcome
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.CubicBezierEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -57,6 +58,9 @@ fun WelcomeScreen(
 ) {
     val colorScheme = MaterialTheme.colorScheme
     val strings = LocalStrings.current
+
+    // 首屏物理锁死系统返回键
+    BackHandler(enabled = true) {}
 
     Scaffold(
         modifier = modifier
