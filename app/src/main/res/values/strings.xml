@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Launcher 名称：在 Compose 启动前由系统读取，故必须经 res/values* 多语言层提供。 -->
+    <string name="app_name">GaoyiPlayOS Setup Wizard</string>
+</resources>
