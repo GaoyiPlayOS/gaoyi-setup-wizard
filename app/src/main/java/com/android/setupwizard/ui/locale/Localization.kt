@@ -45,6 +45,16 @@ data class Strings(
     val noMonetManager: String,
     val back: String,
     val nextStep: String,
+    // 系统导航屏 (NavigationScreen)
+    val navTitle: String,
+    val navSubtitle: String,
+    val navGesturalTitle: String,
+    val navGesturalDesc: String,
+    val navTwoButtonTitle: String,
+    val navTwoButtonDesc: String,
+    val navThreeButtonTitle: String,
+    val navThreeButtonDesc: String,
+    val navUnavailable: String,
 )
 
 /* English (US) */
