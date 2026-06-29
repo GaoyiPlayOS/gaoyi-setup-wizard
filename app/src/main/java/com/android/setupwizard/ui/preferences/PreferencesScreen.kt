@@ -327,7 +327,8 @@ private fun setNightModeViaManager(context: Context, mode: Int): Boolean = runCa
 
 /* ---------- Monet 管理器的三级防御性跳转 ---------- */
 private const val COLORBLENDR_PACKAGE = "com.drdisagree.colorblendr"
-private const val COLORBLENDR_ACTIVITY = "com.drdisagree.colorblendr.ui.activities.MainActivity"
+/* 需要使用 SplashActivity 而不是 Main，别问我为什么，我也不知道这软件什么 bug，直接初始化设置 */
+private const val COLORBLENDR_ACTIVITY = "com.drdisagree.colorblendr.ui.activities.SplashActivity"
 private const val WALLPAPER_PACKAGE = "com.android.wallpaper"
 private const val WALLPAPER_PICKER_ACTIVITY = "com.android.wallpaper.picker.CustomizationPickerActivity"
 
