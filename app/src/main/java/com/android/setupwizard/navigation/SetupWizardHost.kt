@@ -21,6 +21,7 @@ import androidx.navigation.compose.rememberNavController
 import com.android.setupwizard.ui.agreement.AgreementScreen
 import com.android.setupwizard.ui.language.LanguageScreen
 import com.android.setupwizard.ui.lock.LockScreen
+import com.android.setupwizard.ui.navigation.NavigationScreen
 import com.android.setupwizard.ui.preferences.PreferencesScreen
 import com.android.setupwizard.ui.welcome.WelcomeScreen
 import java.util.Locale
@@ -32,6 +33,7 @@ private object SetupWizardRoute {
     const val Agreement = "agreement"
     const val Lock = "lock"
     const val Preferences = "preferences"
+    const val Navigation = "navigation"
 }
 
 private object SetupWizardMotionSpec {
