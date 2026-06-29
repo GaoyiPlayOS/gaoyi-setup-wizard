@@ -97,6 +97,15 @@ private val English = Strings(
     noMonetManager = "No available Monet manager detected.",
     back = "BACK",
     nextStep = "CONTINUE",
+    navTitle = "System Navigation",
+    navSubtitle = "Choose how you move around your phone.",
+    navGesturalTitle = "Fully gestural",
+    navGesturalDesc = "Swipe up for Home, swipe in from the edge to go Back.",
+    navTwoButtonTitle = "2-button",
+    navTwoButtonDesc = "A Home pill with a Back key; swipe the pill to switch apps.",
+    navThreeButtonTitle = "3-button",
+    navThreeButtonDesc = "Classic Back, Home and Recents keys along the bottom.",
+    navUnavailable = "Not supported on this device",
 )
 
 /* 日文 */
@@ -139,6 +148,15 @@ private val Japanese = Strings(
     noMonetManager = "利用可能な Monet マネージャーが見つかりません。(´･ω･`)",
     back = "戻る",
     nextStep = "次へ",
+    navTitle = "システム ナビゲーション",
+    navSubtitle = "端末を操作する方法を選択します。",
+    navGesturalTitle = "フル ジェスチャー",
+    navGesturalDesc = "上にスワイプでホーム、画面端から内側へスワイプで戻ります。",
+    navTwoButtonTitle = "2 ボタン",
+    navTwoButtonDesc = "ホームバーと戻るキー。バーをスワイプしてアプリを切り替えます。",
+    navThreeButtonTitle = "3 ボタン",
+    navThreeButtonDesc = "下部に戻る・ホーム・履歴の 3 つのキーを表示します。",
+    navUnavailable = "この端末では利用できません",
 )
 
 /* 中文全集 */
@@ -181,6 +199,15 @@ private val SimplifiedChinese = Strings(
     noMonetManager = "没有可用的 Monet 管理器哦。(´･ω･`)",
     back = "上一步",
     nextStep = "下一步",
+    navTitle = "系统导航",
+    navSubtitle = "选择你在设备上的操作方式。",
+    navGesturalTitle = "全屏手势",
+    navGesturalDesc = "上滑回到主屏，从屏幕边缘内滑即可返回。",
+    navTwoButtonTitle = "双按钮",
+    navTwoButtonDesc = "主屏药丸搭配返回键，滑动药丸即可切换应用。",
+    navThreeButtonTitle = "三按钮",
+    navThreeButtonDesc = "屏幕底部经典的返回、主屏与最近任务三键。",
+    navUnavailable = "此设备不支持",
 )
 
 private val TraditionalChinese = Strings(
@@ -222,6 +249,15 @@ private val TraditionalChinese = Strings(
     noMonetManager = "沒有可用的 Monet 管理器哦。(´･ω･`)",
     back = "上一步",
     nextStep = "下一步",
+    navTitle = "系統導覽",
+    navSubtitle = "選擇你在裝置上的操作方式。",
+    navGesturalTitle = "全螢幕手勢",
+    navGesturalDesc = "上滑回到主畫面，從螢幕邊緣內滑即可返回。",
+    navTwoButtonTitle = "雙按鈕",
+    navTwoButtonDesc = "主畫面膠囊搭配返回鍵，滑動膠囊即可切換應用程式。",
+    navThreeButtonTitle = "三按鈕",
+    navThreeButtonDesc = "螢幕底部經典的返回、主畫面與最近工作三鍵。",
+    navUnavailable = "此裝置不支援",
 )
 
 /* 韩文 */
@@ -264,6 +300,15 @@ private val Korean = Strings(
     noMonetManager = "사용 가능한 Monet 관리자를 찾을 수 없습니다.",
     back = "이전",
     nextStep = "다음",
+    navTitle = "시스템 탐색",
+    navSubtitle = "기기를 사용하는 방식을 선택하세요.",
+    navGesturalTitle = "제스처 사용",
+    navGesturalDesc = "위로 스와이프하면 홈, 가장자리에서 안쪽으로 스와이프하면 뒤로 이동합니다.",
+    navTwoButtonTitle = "2 버튼",
+    navTwoButtonDesc = "홈 바와 뒤로 키. 바를 스와이프하여 앱을 전환합니다.",
+    navThreeButtonTitle = "3 버튼",
+    navThreeButtonDesc = "화면 하단의 기본 뒤로, 홈, 최근 사용 키입니다.",
+    navUnavailable = "이 기기에서는 지원되지 않습니다",
 )
 
 /* 俄文 */
@@ -306,6 +351,15 @@ private val Russian = Strings(
     noMonetManager = "Доступный менеджер Monet не найден.",
     back = "НАЗАД",
     nextStep = "ПРОДОЛЖИТЬ",
+    navTitle = "Системная навигация",
+    navSubtitle = "Выберите способ навигации по телефону.",
+    navGesturalTitle = "Жесты",
+    navGesturalDesc = "Проведите вверх для перехода на главный экран, от края — назад.",
+    navTwoButtonTitle = "2 кнопки",
+    navTwoButtonDesc = "Кнопка-таблетка «Домой» и кнопка «Назад»; проведите по таблетке для смены приложений.",
+    navThreeButtonTitle = "3 кнопки",
+    navThreeButtonDesc = "Классические кнопки «Назад», «Домой» и «Обзор» внизу экрана.",
+    navUnavailable = "Не поддерживается на этом устройстве",
 )
 
 private val TraditionalChineseRegions = setOf("TW", "HK", "MO")
