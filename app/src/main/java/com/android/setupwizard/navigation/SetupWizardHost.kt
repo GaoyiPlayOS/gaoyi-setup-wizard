@@ -150,9 +150,15 @@ fun SetupWizardHost(
                 isDarkTheme = isDarkTheme,
                 onDarkThemeChange = onDarkThemeChange,
                 onBack = { navController.popBackStack() },
+                onNext = { navController.navigate(SetupWizardRoute.Navigation) },
+            )
+        }
+        composable(route = SetupWizardRoute.Navigation) {
+            NavigationScreen(
+                onBack = { navController.popBackStack() },
 
-                // TODO: 第六屏: 待第六屏落地后，将 onNext 改为 navigate(SetupWizardRoute.<Next>)
-                
+                // TODO: 末屏
+
                 onNext = onSetupFinished,
             )
         }
