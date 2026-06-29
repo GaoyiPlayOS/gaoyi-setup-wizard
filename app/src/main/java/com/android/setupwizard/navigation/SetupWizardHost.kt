@@ -6,6 +6,7 @@ import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.core.Easing
+import androidx.compose.animation.core.CubicBezierEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -19,6 +20,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.android.setupwizard.ui.agreement.AgreementScreen
+import com.android.setupwizard.ui.finish.FinishScreen
 import com.android.setupwizard.ui.language.LanguageScreen
 import com.android.setupwizard.ui.lock.LockScreen
 import com.android.setupwizard.ui.navigation.NavigationScreen
@@ -34,7 +36,12 @@ private object SetupWizardRoute {
     const val Lock = "lock"
     const val Preferences = "preferences"
     const val Navigation = "navigation"
+    const val Finish = "finish"
 }
+
+/* 动画取自老子的 Niri animation{} 配置 */
+const val NiriCloseDurationMillis: Int = 250
+val NiriCloseEasing: Easing = CubicBezierEasing(0.3f, 0.0f, 0.8f, 0.15f)
 
 private object SetupWizardMotionSpec {
     private val linearInterpolator = LinearInterpolator()
@@ -156,10 +163,14 @@ fun SetupWizardHost(
         composable(route = SetupWizardRoute.Navigation) {
             NavigationScreen(
                 onBack = { navController.popBackStack() },
-
-                // TODO: 末屏
-
-                onNext = onSetupFinished,
+                onNext = { navController.navigate(SetupWizardRoute.Finish) },
+            )
+        }
+        composable(route = SetupWizardRoute.Finish) {
+            // 末屏：点击「开始吧」后由 FinishScreen 自行执行 Niri 退场动效 + 特权移交
+            // 收尾时回调 onSetupFinished 关闭向导 Activity
+            FinishScreen(
+                onSetupFinished = onSetupFinished,
             )
         }
     }
