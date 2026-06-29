@@ -1,101 +1,105 @@
+import org.gradle.api.DefaultTask
+import org.gradle.api.file.RegularFileProperty
+import org.gradle.api.tasks.InputFile
+import org.gradle.api.tasks.OutputFile
+import org.gradle.api.tasks.TaskAction
+import org.gradle.process.ExecOperations
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.io.File
+import javax.inject.Inject
 
 plugins {
     id("com.android.application")
-    kotlin("android")
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 val platformCertificate = rootProject.layout.projectDirectory.file("sign/platform.x509.pem")
 val platformPrivateKey = rootProject.layout.projectDirectory.file("sign/platform.pk8")
-val generatedSigningDir = rootProject.layout.buildDirectory.dir("signing")
 val generatedPlatformKeystore = rootProject.layout.buildDirectory.file("signing/platform.jks")
 
-val preparePlatformKeystore by tasks.registering {
-    inputs.files(platformCertificate, platformPrivateKey)
-    outputs.file(generatedPlatformKeystore)
+/* Gradle 9 已移除 `Project.exec`，故重构为带 [ExecOperations] 注入的类型化任务 */
+abstract class PreparePlatformKeystore @Inject constructor(
+    private val execOps: ExecOperations,
+) : DefaultTask() {
+    @get:InputFile
+    abstract val certificate: RegularFileProperty
 
-    doLast {
-        val signingDir = generatedSigningDir.get().asFile.apply { mkdirs() }
+    @get:InputFile
+    abstract val privateKey: RegularFileProperty
+
+    @get:OutputFile
+    abstract val keystore: RegularFileProperty
+
+    @TaskAction
+    fun prepare() {
+        val keystoreFile = keystore.get().asFile
+        val signingDir = keystoreFile.parentFile.apply { mkdirs() }
         val pemKey = File(signingDir, "platform.pem")
         val pkcs12File = File(signingDir, "platform.p12")
-        val keystoreFile = generatedPlatformKeystore.get().asFile
 
         pemKey.delete()
         pkcs12File.delete()
         keystoreFile.delete()
 
-        exec {
+        execOps.exec {
             commandLine(
-                "openssl",
-                "pkcs8",
-                "-inform",
-                "DER",
-                "-in",
-                platformPrivateKey.asFile.absolutePath,
-                "-out",
-                pemKey.absolutePath,
-                "-outform",
-                "PEM",
-                "-nocrypt",
+                "openssl", "pkcs8", "-inform", "DER",
+                "-in", privateKey.get().asFile.absolutePath,
+                "-out", pemKey.absolutePath,
+                "-outform", "PEM", "-nocrypt",
             )
         }
-
-        exec {
+        execOps.exec {
             commandLine(
-                "openssl",
-                "pkcs12",
-                "-export",
-                "-in",
-                platformCertificate.asFile.absolutePath,
-                "-inkey",
-                pemKey.absolutePath,
-                "-name",
-                "platform",
-                "-out",
-                pkcs12File.absolutePath,
-                "-passout",
-                "pass:android",
+                "openssl", "pkcs12", "-export",
+                "-in", certificate.get().asFile.absolutePath,
+                "-inkey", pemKey.absolutePath,
+                "-name", "platform",
+                "-out", pkcs12File.absolutePath,
+                "-passout", "pass:android",
             )
         }
-
-        exec {
+        execOps.exec {
             commandLine(
-                "keytool",
-                "-importkeystore",
-                "-noprompt",
-                "-alias",
-                "platform",
-                "-srckeystore",
-                pkcs12File.absolutePath,
-                "-srcstoretype",
-                "PKCS12",
-                "-srcstorepass",
-                "android",
-                "-destkeystore",
-                keystoreFile.absolutePath,
-                "-deststoretype",
-                "JKS",
-                "-deststorepass",
-                "android",
-                "-destkeypass",
-                "android",
+                "keytool", "-importkeystore", "-noprompt",
+                "-alias", "platform",
+                "-srckeystore", pkcs12File.absolutePath,
+                "-srcstoretype", "PKCS12",
+                "-srcstorepass", "android",
+                "-destkeystore", keystoreFile.absolutePath,
+                "-deststoretype", "JKS",
+                "-deststorepass", "android",
+                "-destkeypass", "android",
             )
         }
     }
 }
 
+val preparePlatformKeystore by tasks.registering(PreparePlatformKeystore::class) {
+    certificate.set(platformCertificate)
+    privateKey.set(platformPrivateKey)
+    keystore.set(generatedPlatformKeystore)
+}
+
 android {
     namespace = "com.android.setupwizard"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.android.setupwizard"
         minSdk = 31
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0.0"
+        targetSdk = 37
+        versionCode = 31
+        versionName = "12"
         vectorDrawables {
             useSupportLibrary = true
+        }
+        /*
+         * 仅保留 aarch64
+         * 剔除全部 32 位与 x86 冗余 ABI
+        */
+        ndk {
+            abiFilters += "arm64-v8a"
         }
     }
 
@@ -119,7 +123,13 @@ android {
         }
         release {
             signingConfig = signingConfigs.getByName("platform")
-            isMinifyEnabled = false
+            /* 
+             * 极限瘦身说是
+             * R8 全量混淆 + 无用资源剔除
+             * Anti QZX
+            */
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
@@ -131,17 +141,9 @@ android {
         compose = true
     }
 
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.14"
-    }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
-    }
-
-    kotlinOptions {
-        jvmTarget = "21"
     }
 
     packaging {
@@ -151,17 +153,24 @@ android {
     }
 }
 
+// Kotlin 2.x：jvmTarget 迁移至 compilerOptions DSL（android.kotlinOptions 已废弃）
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_21)
+    }
+}
+
 tasks.named("preBuild").configure {
     dependsOn(preparePlatformKeystore)
 }
 
 dependencies {
-    val composeBom = platform("androidx.compose:compose-bom:2024.09.00")
+    val composeBom = platform("androidx.compose:compose-bom:2026.06.00")
 
-    implementation("androidx.core:core-ktx:1.13.1")
-    implementation("androidx.activity:activity-compose:1.9.2")
-    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.6")
-    implementation("androidx.navigation:navigation-compose:2.8.0")
+    implementation("androidx.core:core-ktx:1.19.0")
+    implementation("androidx.activity:activity-compose:1.13.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.11.0")
+    implementation("androidx.navigation:navigation-compose:2.9.8")
 
     implementation(composeBom)
     androidTestImplementation(composeBom)
@@ -175,4 +184,3 @@ dependencies {
 
     debugImplementation("androidx.compose.ui:ui-tooling")
 }
-
