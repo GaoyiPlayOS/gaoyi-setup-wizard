@@ -5,7 +5,7 @@ A simple, minimalism SUW (Setup Wizard) for GaoyiPlayOS Release version.
 
 ## Features
 - Elegant UI (Material You, Dark Mode, Monet)
-- Full accessibility support (TalkBack)
+- ~~Full accessibility support (TalkBack)~~ <- **In progress, will be introduced with Accessibility panel.**
 - Multi-language support (translations are welcome!)
 - Full system integration *(see below)*
 
