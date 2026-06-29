@@ -15,7 +15,7 @@
         android:directBootAware="true"
         android:fullBackupContent="false"
         android:icon="@android:drawable/sym_def_app_icon"
-        android:label="GaoyiPlayOS Setup Wizard"
+        android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar">
         <activity
