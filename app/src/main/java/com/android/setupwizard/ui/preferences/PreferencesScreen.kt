@@ -54,12 +54,6 @@ import com.android.setupwizard.ui.locale.LocalStrings
 
 /**
  * 第五屏：系统偏好与动态取色（完全居左 / Android 12+ 现代布局）。
- *
- * - 区域 A：调色盘图标 + 标题（居左）。
- * - 区域 B：Monet 五色预览 + 三级跳转的「更改壁纸与颜色」按钮；深 / 浅色单选卡片，
- *   切换时向导即时重绘（[onDarkThemeChange]）并借特权全局热切换系统夜间模式。
- * - 区域 C：底部 BACK / CONTINUE 双按钮导航栏。
- *
  * 外观状态完全 hoist 至 Activity：本屏只读 [isDarkTheme]、上抛 [onDarkThemeChange]，保持无状态。
  */
 @Composable
@@ -74,7 +68,7 @@ fun PreferencesScreen(
     val colorScheme = MaterialTheme.colorScheme
     val strings = LocalStrings.current
 
-    // 选择外观：先即时重绘向导自身，再借 android.uid.system 特权全局热切换系统夜间模式。
+    // 选择外观：先即时重绘向导自身，再借 android.uid.system 特权全局热切换系统夜间模式
     val onSelectMode: (Boolean) -> Unit = { wantDark ->
         onDarkThemeChange(wantDark)
         applySystemNightMode(context, wantDark)
@@ -307,57 +301,49 @@ private fun AppearanceCard(
     }
 }
 
-/* ---------- 全局系统夜间模式的特权热切换 ---------- */
-
 private const val SECURE_UI_NIGHT_MODE = "ui_night_mode"
 
 /**
  * 借助 android.uid.system 特权全局热切换系统夜间模式：
- * 主路径走公开的 [UiModeManager.setNightMode]（凭平台签名持有 MODIFY_DAY_NIGHT_MODE），
- * 失败再回退写入 Settings.Secure 的 `ui_night_mode`。非特权运行时静默降级（兜底容错），
- * 与 LanguageScreen#applySystemLocale 同理 —— 仅向导自身的进程内重绘照常生效。
+ * 主路径走公开的 [UiModeManager.setNightMode]
+ * 失败再回退写入 Settings.Secure 的 `ui_night_mode`。非特权运行时静默降级（兜底容错）
  */
-private fun applySystemNightMode(context: Context, dark: Boolean): Boolean = runCatching {
+private fun applySystemNightMode(context: Context, dark: Boolean): Boolean {
     val mode = if (dark) UiModeManager.MODE_NIGHT_YES else UiModeManager.MODE_NIGHT_NO
-
-    val applied = runCatching {
-        val uiModeManager = context.getSystemService(Context.UI_MODE_SERVICE) as? UiModeManager
-            ?: return@runCatching false
-        uiModeManager.setNightMode(mode)
-        true
+    // 主路径：公开的 UiModeManager.setNightMode
+    if (setNightModeViaManager(context, mode)) return true
+    // 兜底
+    return runCatching {
+        Settings.Secure.putInt(context.contentResolver, SECURE_UI_NIGHT_MODE, mode)
     }.getOrDefault(false)
+}
 
-    if (applied) return@runCatching true
-
-    // 兜底：直接写安全设置（系统 UID 持有 WRITE_SECURE_SETTINGS）。
-    Settings.Secure.putInt(context.contentResolver, SECURE_UI_NIGHT_MODE, mode)
+private fun setNightModeViaManager(context: Context, mode: Int): Boolean = runCatching {
+    val uiModeManager = context.getSystemService(Context.UI_MODE_SERVICE) as? UiModeManager
+        ?: return@runCatching false
+    uiModeManager.setNightMode(mode)
+    true
 }.getOrDefault(false)
 
 /* ---------- Monet 管理器的三级防御性跳转 ---------- */
-
 private const val COLORBLENDR_PACKAGE = "com.drdisagree.colorblendr"
 private const val COLORBLENDR_ACTIVITY = "com.drdisagree.colorblendr.ui.activities.MainActivity"
 private const val WALLPAPER_PACKAGE = "com.android.wallpaper"
 private const val WALLPAPER_PICKER_ACTIVITY = "com.android.wallpaper.picker.CustomizationPickerActivity"
 
-/**
- * 分级唤起 Monet 管理器，全程守卫以杜绝 ActivityNotFoundException：
- * 1) 一级 —— 检测到 ColorBlendr 已安装则跳其 MainActivity；
- * 2) 二级 —— 回退 AOSP 壁纸与定制选择器 CustomizationPickerActivity；
- * 3) 三级 —— 两者皆不可达则弹出随 Locale 切换的 Toast 提示。
- */
+/* 分级唤起 Monet 管理器，全程守卫以杜绝 ActivityNotFoundException */
 private fun launchMonetManager(context: Context, fallbackToast: String) {
-    // 一级：ColorBlendr（先确认已安装，再以 resolveActivity 守卫具体组件可达）。
+    // 一级
     if (isPackageInstalled(context, COLORBLENDR_PACKAGE)) {
         val intent = resolvableExplicitIntent(context, COLORBLENDR_PACKAGE, COLORBLENDR_ACTIVITY)
         if (intent != null && startActivitySafely(context, intent)) return
     }
 
-    // 二级：AOSP 官方壁纸与定制选择器。
+    // 二级
     val wallpaper = resolvableExplicitIntent(context, WALLPAPER_PACKAGE, WALLPAPER_PICKER_ACTIVITY)
     if (wallpaper != null && startActivitySafely(context, wallpaper)) return
 
-    // 三级：Toast 拦截。
+    // 三级：Toast 拦截
     Toast.makeText(context, fallbackToast, Toast.LENGTH_SHORT).show()
 }
 
