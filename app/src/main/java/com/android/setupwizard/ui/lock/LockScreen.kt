@@ -220,25 +220,39 @@ private fun LockOptionItem(
     }
 }
 
-/* ---------- 系统锁屏配置组件的特权唤起 ---------- */
+/* 
+ * ---------- 系统锁屏配置组件的特权唤起 ---------- 
+ * 好像可以直接跳 Activity，就用了哦
+*/
 
 private const val SETTINGS_PACKAGE = "com.android.settings"
-private const val CHOOSE_LOCK_GENERIC = "com.android.settings.password.ChooseLockGeneric"
+private const val CHOOSE_LOCK_PATTERN = "com.android.settings.password.ChooseLockPattern"
+private const val CHOOSE_LOCK_PASSWORD = "com.android.settings.password.ChooseLockPassword"
 private const val WIZARD_THEME_LIGHT = "glif_v3_light"
 private const val WIZARD_THEME_DARK = "glif_v3"
 
 private enum class LockType(val passwordQuality: Int) {
-    Pin(0x00020000),       // PASSWORD_QUALITY_NUMERIC（数字 PIN）
-    Password(0x00040000),  // PASSWORD_QUALITY_ALPHABETIC（含字母的混合密码）
-    Pattern(0x00010000),   // PASSWORD_QUALITY_SOMETHING（手势图案）
+    Pattern(0x00010000),   // PASSWORD_QUALITY_SOMETHING
+    Pin(0x00020000),       // PASSWORD_QUALITY_NUMERIC
+    Password(0x00040000),  // PASSWORD_QUALITY_ALPHABETIC
 }
 
-private fun buildChooseLockIntent(type: LockType, wizardTheme: String): Intent = Intent().apply {
-    component = ComponentName(SETTINGS_PACKAGE, CHOOSE_LOCK_GENERIC)
-    putExtra("is_setup_flow", true)
-    putExtra("isSetupFlow", true)
-    putExtra("theme", wizardTheme)
-    putExtra("lockscreen.password_type", type.passwordQuality)
+private fun buildChooseLockIntent(type: LockType, wizardTheme: String): Intent = when (type) {
+    LockType.Pattern -> Intent().apply {
+        component = ComponentName(SETTINGS_PACKAGE, CHOOSE_LOCK_PATTERN)
+        putExtra("is_setup_flow", true)
+        putExtra("isSetupFlow", true)
+        putExtra("theme", wizardTheme)
+    }
+    
+    LockType.Pin, LockType.Password -> Intent().apply {
+        component = ComponentName(SETTINGS_PACKAGE, CHOOSE_LOCK_PASSWORD)
+        putExtra("is_setup_flow", true)
+        putExtra("isSetupFlow", true)
+        putExtra("theme", wizardTheme)
+        putExtra("lockscreen.password_type", type.passwordQuality)
+        putExtra("password_quality", type.passwordQuality)  // 兼容备用
+    }
 }
 
 private fun isDeviceSecured(context: Context): Boolean = runCatching {
