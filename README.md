@@ -15,6 +15,10 @@ A simple, minimalism SUW (Setup Wizard) for GaoyiPlayOS Release version.
 - 100% Kotlin with Jetpack Compose
 - 100% Tranditional Style Human Coding. 0 AI, 0 Vibe.
 <!-- btw README wrote by myself -->
+<p align="left">
+  <img src="assets/badges/svg/Written-By-a-Human-Not-By-AI-Badge-black.svg" alt="All documents are wrote by a human." href="https://notbyai.fyi/" target="_blank" />
+  <img src="assets/badges/svg/Developed-By-a-Human-Not-By-AI-Badge-black.svg" alt="All codes are wrote, tested and reviewed by a human." href="https://notbyai.fyi/" target="_blank" />
+</p>
 - Fuck GeometryOS
 <!-- And also fuck QZX -->
 
@@ -23,6 +27,10 @@ A simple, minimalism SUW (Setup Wizard) for GaoyiPlayOS Release version.
 - Minimal Android version is **12 (API 31)**
 - `platform` Signing Keys from AOSP is **required for `shared.system.uid`**
 - Builds must be placed in `/system/system_ext/priv-app/SetupWizard` with name `SetupWizard.apk`
+
+## Toolchain
+- Gradle 9.6+ *(Project uses 9.6.1)*
+- Android NDK & `build-tools` 31+. Target is 37 (Cinnamon Bun)
 
 ## License
 GPL Version 3. See the [License](/LICENSE) file.
