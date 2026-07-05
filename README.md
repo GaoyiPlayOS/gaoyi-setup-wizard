@@ -14,13 +14,17 @@ A simple, minimalism SUW (Setup Wizard) for GaoyiPlayOS Release version.
 - 0 Java, 0 XML
 - 100% Kotlin with Jetpack Compose
 - 100% Tranditional Style Human Coding. 0 AI, 0 Vibe.
-<!-- btw README wrote by myself -->
-<p align="left">
-  <img src="assets/badges/svg/Written-By-a-Human-Not-By-AI-Badge-black.svg" alt="All documents are wrote by a human." href="https://notbyai.fyi/" target="_blank" />
-  <img src="assets/badges/svg/Developed-By-a-Human-Not-By-AI-Badge-black.svg" alt="All codes are wrote, tested and reviewed by a human." href="https://notbyai.fyi/" target="_blank" />
-</p>
 - Fuck GeometryOS
 <!-- And also fuck QZX -->
+<!-- btw README wrote by myself -->
+<p align="left">
+  <a href="https://notbyai.fyi/" target="_blank">
+    <img src="assets/badges/svg/Written-By-a-Human-Not-By-AI-Badge-black.svg" alt="All documents are written by a human." />
+  </a>
+  <a href="https://notbyai.fyi/" target="_blank">
+    <img src="assets/badges/svg/Developed-By-a-Human-Not-By-AI-Badge-black.svg" alt="All codes are written, tested and reviewed by a human." />
+  </a>
+</p>
 
 ## Requirements
 - Only support **`aarch64` (armv8)**
