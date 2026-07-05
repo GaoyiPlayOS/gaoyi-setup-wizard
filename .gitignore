@@ -26,6 +26,12 @@ keystore.properties
 /.claude
 /.codex
 /.gemini
+/.agents
+/.codegraph
+/.trellis
+
+# GitHub?
+/.github
 
 # For those who using Android Studio
 # btw I use Neovim
