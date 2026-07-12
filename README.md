@@ -1,3 +1,7 @@
+> [!tip]
+> **Why this branch exists?**
+> A simple concept aimed at *enhancing user experience* by introducting **Live2D / Inochi2D** mascot(s) to the SUW.
+
 ![gaoyi-setup-wizard](https://socialify.git.ci/GaoyiPlayOS/gaoyi-setup-wizard/image?custom_language=Kotlin&description=1&font=Source+Code+Pro&issues=1&language=1&logo=https%3A%2F%2Fgaoyiplayos.pages.dev%2Fassets%2Fandroid-chrome.png&name=1&owner=1&pattern=Transparent&pulls=1&stargazers=1&theme=Auto)
 
 # SUW for GaoyiPlayOS
