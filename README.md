@@ -1,3 +1,15 @@
+> [!tip]
+> **Why this branch exists?**
+> Feature a new screen, allow users to adjust their status bar if needed.
+> GaoyiPlayOS may running on various devices, such as:
+> - Notch screen
+> - Waterdrop screen
+> - Hole screen
+> - etc.
+>
+> We cannot add many overlays to fix it. That's too bad.
+> We thought: **the privileges should be given to user.**
+
 ![gaoyi-setup-wizard](https://socialify.git.ci/GaoyiPlayOS/gaoyi-setup-wizard/image?custom_language=Kotlin&description=1&font=Source+Code+Pro&issues=1&language=1&logo=https%3A%2F%2Fgaoyiplayos.pages.dev%2Fassets%2Fandroid-chrome.png&name=1&owner=1&pattern=Transparent&pulls=1&stargazers=1&theme=Auto)
 
 # SUW for GaoyiPlayOS
