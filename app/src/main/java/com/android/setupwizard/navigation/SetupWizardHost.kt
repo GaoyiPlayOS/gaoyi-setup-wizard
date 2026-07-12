@@ -35,6 +35,7 @@ private object SetupWizardRoute {
     const val Agreement = "agreement"
     const val Lock = "lock"
     const val Preferences = "preferences"
+    const val StatusBar = "statusbar"
     const val Navigation = "navigation"
     const val Finish = "finish"
 }
@@ -156,6 +157,13 @@ fun SetupWizardHost(
             PreferencesScreen(
                 isDarkTheme = isDarkTheme,
                 onDarkThemeChange = onDarkThemeChange,
+                onBack = { navController.popBackStack() },
+                onNext = { navController.navigate(SetupWizardRoute.Navigation) },
+            )
+        }
+        composable(route = SetupWizardRoute.StatusBar) {
+            StatusBarScreen(
+                // TODO: Add actual logics here.
                 onBack = { navController.popBackStack() },
                 onNext = { navController.navigate(SetupWizardRoute.Navigation) },
             )
