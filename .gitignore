@@ -37,3 +37,14 @@ keystore.properties
 # btw I use Neovim
 captures/
 *.hprof
+
+# Live2D integration
+# Why ignoring this? For developers to 
+# integrating themselves models.
+models/
+expressions/
+motions/
+*.model3.json
+*.moc3
+*.cdi3.json
+*.physic3.json
