@@ -158,7 +158,7 @@ fun SetupWizardHost(
                 isDarkTheme = isDarkTheme,
                 onDarkThemeChange = onDarkThemeChange,
                 onBack = { navController.popBackStack() },
-                onNext = { navController.navigate(SetupWizardRoute.Navigation) },
+                onNext = { navController.navigate(SetupWizardRoute.StatusBar) },
             )
         }
         composable(route = SetupWizardRoute.StatusBar) {
